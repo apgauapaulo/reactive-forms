@@ -1,0 +1,22 @@
+<form [formGroup]="cadastroForm" (ngSubmit)="submitForm()">
+  <p>
+    Nome: <input type="text" formControlName = "firstName">&nbsp;
+    <span class="alert"
+    *ngIf="cadastroForm.get('firstName')?.errors && (cadastroForm.get('firstName')?.touched || cadastroForm.get('firstName')?.dirty)">Campo inválido.</span>
+  </p>
+  <p>
+    Sobrenome: <input type="text" formControlName = "lastName">&nbsp;
+    <span class="alert"
+    *ngIf="cadastroForm.get('lastName')?.errors && (cadastroForm.get('lastName')?.touched || cadastroForm.get('lastName')?.dirty)">Campo inválido.</span>
+  </p>
+  <p>
+    Email: <input type="email" formControlName = "email">&nbsp;<span class="alert"
+    *ngIf="cadastroForm.get('email')?.errors && (cadastroForm.get('email')?.touched || cadastroForm.get('email')?.dirty)">Campo inválido.</span>
+  </p>
+  <p>
+    {{ cadastroForm.get('lastName')?.errors | json }}
+  </p>
+  <p>
+    <button [disabled]="cadastroForm.invalid">Enviar</button>
+  </p>
+</form>
